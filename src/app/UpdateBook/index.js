@@ -29,7 +29,7 @@ const UpdateBook = () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
   };
 
-  const handleSaveClick = (id, value) => () => {
+  const handleSaveClick = (id) => () => {
     console.log('save click', rowItem)
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
     if(rowItem) {
@@ -70,16 +70,8 @@ const UpdateBook = () => {
       cellClassName: 'actions',
       getActions: ({ id, row }) => {
         const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-        // if(JSON.stringify(row) !== JSON.stringify(rowItem)) {
-          // setRow(row)
-        // }
-        
-        // if(Object.keys(row) !== Object.keys(rowItem)) {
-        //   setRow(row)
-        // }
-        // setRow(row)
+        console.log(row, 'row')
         if (isInEditMode) {
-          console.log(row, 'row')
           return [
             <GridActionsCellItem
               icon={<SaveIcon />}
@@ -87,7 +79,7 @@ const UpdateBook = () => {
               sx={{
                 color: 'primary.main',
               }}
-              onClick={(id, row) => console.log(id, row)}
+              onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
               icon={<CancelIcon />}
