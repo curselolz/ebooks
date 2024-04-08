@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 import { BASE_URL } from '../../../var';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -20,5 +20,11 @@ const api = axios.create({
     },
   ],
 });
-export default api;
+
+export const apiFormData = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': "multipart/form-data",
+  },
+});
 

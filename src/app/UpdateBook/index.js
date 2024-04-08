@@ -30,7 +30,6 @@ const UpdateBook = () => {
   };
 
   const handleSaveClick = (id) => () => {
-    console.log('save click', rowItem)
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
     if(rowItem) {
       updateBookRequest(id, rowItem)
@@ -70,7 +69,6 @@ const UpdateBook = () => {
       cellClassName: 'actions',
       getActions: ({ id, row }) => {
         const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-        console.log(row, 'row')
         if (isInEditMode) {
           return [
             <GridActionsCellItem

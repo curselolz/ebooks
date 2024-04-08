@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
@@ -15,7 +16,12 @@ const CreateBook = () => {
   const onAddBook = (data) => {
     addBook(data);
     setStateModal(true);
-    createBookRequest(data);
+        const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+    fetch('/book', requestOptions)
   }
 
   const onHandleChange = () => setStateModal(!open)
@@ -25,6 +31,9 @@ const CreateBook = () => {
       <FormContainer
         onSuccess={data => onAddBook(data)}
       >
+        <Typography variant="h3" gutterBottom>
+        Create profile
+        </Typography>
         <TextFieldElement name="author" label="author" required/>
         <TextFieldElement name="country" label="country" required/>
         <TextFieldElement name="language" label="language" required/>

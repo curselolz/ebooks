@@ -4,6 +4,7 @@ import appReducer from './DataReducer';
 
 const initialState = [  {
     "id": 1,
+    "_id": 1,
     "author": "Chinua Achebe",
     "country": "Nigeria",
     "imageLink": "images/things-fall-apart.jpg",

@@ -39,6 +39,10 @@ const DeleteBook = () => {
     setRowModesModel(newRowModesModel);
   };
 
+  const getRowId = (row) => {
+    return row._id;
+  };
+
   const columnsWithAction = [
     ...columns,
     {
@@ -74,6 +78,7 @@ const DeleteBook = () => {
       }}
     >
       <DataGrid
+        getRowId={getRowId}
         rows={rows}
         columns={columnsWithAction}
         editMode="row"

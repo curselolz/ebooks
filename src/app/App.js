@@ -12,6 +12,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import ReadBook from './ReadBook';
+import SignIn from './Welcome/SignIn';
+import SignUp from './Welcome/SignUp';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from './common/store/DataProvider';
 
@@ -19,8 +21,8 @@ const App = () => {
   const { data } = useContext(GlobalContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const pages = ['Create', 'Update', 'Delete'];
-  const links = ['create', 'update', 'delete'];
+  const pages = ['Create post', 'View profile' ];
+  const links = ['create', 'profile'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,6 +38,7 @@ const App = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  
   return (
     <>
      <AppBar position="static">
@@ -144,14 +147,14 @@ const App = () => {
               onClose={handleCloseUserMenu}
             >
             </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-      <ReadBook data={data} />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      {/* <SignIn /> */}
+      <SignUp />
     </>
-
-  );
+    );
 }
 
 export default App;

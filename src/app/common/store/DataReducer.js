@@ -24,8 +24,6 @@ export default function appReducer(state, action) {
       };
 
     case "REMOVE_BOOK":
-              console.log(action.payload, 'action.payload')
-
       return state.filter(
           (book) => book.id !== action.payload
         )

@@ -6,8 +6,14 @@ import { GlobalContext } from '../common/store/DataProvider';
 
 const ReadBook = () => {
   const { data } = useContext(GlobalContext);
+
+  const getRowId = (row) => {
+    return row._id;
+  };
+
   return (
       <DataGrid
+        getRowId={getRowId}
         rows={data}
         columns={columns}
         initialState={{
